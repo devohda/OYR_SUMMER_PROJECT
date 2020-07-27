@@ -1,0 +1,11 @@
+#word_container{
+
+    width:800px;
+    height:200px;
+
+    background-color: #f4b33d;
+    border-radius: 30px;
+
+    /*margin:30px;*/
+    margin: 30px auto;
+}

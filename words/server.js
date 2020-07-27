@@ -3,7 +3,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 5000;
-const port2 = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,4 +29,4 @@ app.get('/api/words', (req, res) => {
     });
 });
 
-app.listen(port2, () => console.log(`Example app listening at ${port2}`));
+app.listen(port, () => console.log(`Example app listening at ${port}`));
