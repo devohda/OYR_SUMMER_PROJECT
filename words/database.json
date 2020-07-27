@@ -1,0 +1,7 @@
+{
+    "host": "3.16.38.41",
+    "port": 3306,
+    "user": "ohda",
+    "password": "dhekgP0901!",
+    "database": "new_words"
+}
