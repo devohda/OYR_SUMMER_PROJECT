@@ -2,7 +2,6 @@ const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,6 +19,10 @@ const connection = mysql.createConnection({
 });
 connection.connect();
 
+app.get('/', (req, res) => {
+    res.send('hello');
+});
+
 app.get('/api/words', (req, res) => {
     connection.query('SELECT * FROM words', (err, rows, fields) => {
         if (err) throw err;
@@ -29,4 +32,4 @@ app.get('/api/words', (req, res) => {
     });
 });
 
-app.listen(port, () => console.log(`Example app listening at ${port}`));
+module.exports = app;
