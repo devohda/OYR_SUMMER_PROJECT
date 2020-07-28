@@ -1,42 +1,31 @@
-var express = require('express');
-var path = require('path');
+//db 연결하는 파일
+const fs = require('fs');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
 
-var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// view engine setup
+const data = fs.readFileSync('./database.json');
+const conf = JSON.parse(data);
+const mysql = require('mysql');
 
-app.use('/', (req, res) => {
-    res.send('hellohello');
+const connection = mysql.createConnection({
+    host: conf.host,
+    user: conf.user,
+    password: conf.password,
+    port: conf.port,
+    database: conf.database,
 });
+connection.connect();
 
-/// catch 404 and forwarding to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-/// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function (err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err,
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
+app.get('/api/words', (req, res) => {
+    connection.query('SELECT * FROM words', (err, rows, fields) => {
+        if (err) throw err;
+        else {
+            res.send(rows);
+        }
     });
 });
 
