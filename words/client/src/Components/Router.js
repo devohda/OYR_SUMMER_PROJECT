@@ -14,7 +14,7 @@ export default () => (
             <Route path="/qna" component={QnA} />
             <Route path="/beauty" component={Beauty} />
             <Route path="/profile" component={Profile} />
-            <Redirect from="*" to="/" /> //지정한 경로 외의 주소가 돌아왔을 떄 되돌아가기.
+            <Redirect from="*" to="/" /> {/*지정한 경로 외의 주소가 돌아왔을 떄 되돌아가기.*/}
         </Switch>
     </Router>
 );
