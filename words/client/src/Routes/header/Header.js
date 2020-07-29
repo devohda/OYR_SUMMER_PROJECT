@@ -10,7 +10,7 @@ const Header = styled.header`
 
     background-color: #ffffff;
 
-    height: 5vw;
+    height: 4.5vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,46 +20,52 @@ const Header = styled.header`
 `;
 
 const LogoDiv = styled.div`
-    height: 2.7vw;
+    height: 2.2vw;
 `;
 
 const LogoImg = styled.img`
-    height: 2.7vw;
+    height: 2.2vw;
+    margin-left: 3vw;
+`;
+
+const SearchArea = styled.div`
+    position: relative;
 `;
 
 const SearchBox = styled.input`
-    text-align: center;
-    width: 679px;
-    height: 46.5px;
-    border: 0px;
-    border-bottom: 5px solid #f4b33d;
-    box-sizing: border-box;
-
+    height: 2.2vw;
+    width: 27vw;
+    border-radius: 1vw;
+    border: #dbdbdb 1px solid;
+    padding-left: 2vw;
+    font-size: 0.9vw;
+    margin-left: 4vw;
     &:focus {
         outline: none;
     }
 `;
 
 const SearchImg = styled.img`
-    height: 1.5vw;
+    height: 1.1vw;
+    position: absolute;
+    right: 2vw;
+    top: 0.5vw;
 `;
+
 const Navigation = styled.ul`
-    width: 356px;
+    width: 18vw;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 `;
 
-const NaviList = styled.li`
-    width: 34px;
-    height: 20px;
-`;
+const NaviList = styled.li``;
 
 const Menu = styled.a`
     color: #f4b33d;
-    font-size: 0.9vw;
-    font-weight: 600;
+    font-size: 0.85vw;
+    font-weight: 500;
 `;
 
 export default () => {
@@ -75,14 +81,12 @@ export default () => {
                     <LogoImg src={logo} alt={'logo'} />
                 </a>
             </LogoDiv>
-            <div>
-                <SearchBox type="text" />
+            <SearchArea>
+                <SearchBox type="text" placeholder="단어 검색" />
                 <SearchImg id="search" src={searchImg} alt={'search'} onClick={clickSearch}></SearchImg>
-            </div>
+                {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
+            </SearchArea>
             <Navigation>
-                <NaviList>
-                    <Menu href="/">main</Menu>
-                </NaviList>
                 <NaviList>
                     <Menu href="/dictionary">words</Menu>
                 </NaviList>
