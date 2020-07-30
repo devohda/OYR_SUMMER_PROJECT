@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import logo from './header_logo.png';
 import searchImg from './search.png';
 import styled from 'styled-components';
@@ -16,8 +16,6 @@ const Header = styled.header`
     align-items: center;
     justify-content: space-between;
     padding: 0 4vw;
-
-    box-shadow: 0.05vw 0.05vw 0.7vw 0.05vw #ccc;
 `;
 
 const LogoDiv = styled.div`
@@ -61,7 +59,10 @@ const Navigation = styled.ul`
     justify-content: space-between;
 `;
 
-const NaviList = styled.li``;
+const NaviList = styled.li`
+    padding-bottom: 0.1vw;
+    border-bottom: 1px solid ${(props) => (props.current ? '#f4b33d' : 'transparent')};
+`;
 
 const Menu = styled(Link)`
     color: #f4b33d;
@@ -69,7 +70,7 @@ const Menu = styled(Link)`
     font-weight: 500;
 `;
 
-export default () => {
+export default withRouter(({ location: { pathname } }) => {
     function clickSearch() {
         let search = document.getElementById('search');
         console.log('hello');
@@ -88,19 +89,19 @@ export default () => {
                 {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
             </SearchArea>
             <Navigation>
-                <NaviList>
+                <NaviList current={pathname === '/dictionary'}>
                     <Menu to="/dictionary">words</Menu>
                 </NaviList>
-                <NaviList>
+                <NaviList current={pathname === '/qna'}>
                     <Menu to="/qna">QnA</Menu>
                 </NaviList>
-                <NaviList>
+                <NaviList current={pathname === '/beauty'}>
                     <Menu to="/beauty">quotes</Menu>
                 </NaviList>
-                <NaviList>
+                <NaviList current={pathname === '/profile'}>
                     <Menu to="/profile">profile</Menu>
                 </NaviList>
             </Navigation>
         </Header>
     );
-};
+});
