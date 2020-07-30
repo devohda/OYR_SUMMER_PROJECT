@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from './header_logo.png';
 import searchImg from './search.png';
 import styled from 'styled-components';
@@ -62,7 +63,7 @@ const Navigation = styled.ul`
 
 const NaviList = styled.li``;
 
-const Menu = styled.a`
+const Menu = styled(Link)`
     color: #f4b33d;
     font-size: 0.85vw;
     font-weight: 500;
@@ -77,9 +78,9 @@ export default () => {
     return (
         <Header>
             <LogoDiv>
-                <a href="/">
+                <Link to="/">
                     <LogoImg src={logo} alt={'logo'} />
-                </a>
+                </Link>
             </LogoDiv>
             <SearchArea>
                 <SearchBox type="text" placeholder="단어 검색" />
@@ -88,16 +89,16 @@ export default () => {
             </SearchArea>
             <Navigation>
                 <NaviList>
-                    <Menu href="/dictionary">words</Menu>
+                    <Menu to="/dictionary">words</Menu>
                 </NaviList>
                 <NaviList>
-                    <Menu href="/qna">QnA</Menu>
+                    <Menu to="/qna">QnA</Menu>
                 </NaviList>
                 <NaviList>
-                    <Menu href="/beauty">quotes</Menu>
+                    <Menu to="/beauty">quotes</Menu>
                 </NaviList>
                 <NaviList>
-                    <Menu href="/profile">profile</Menu>
+                    <Menu to="/profile">profile</Menu>
                 </NaviList>
             </Navigation>
         </Header>
