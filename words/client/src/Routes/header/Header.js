@@ -25,10 +25,12 @@ const LogoDiv = styled.div`
 const LogoImg = styled.img`
     height: 2.2vw;
     margin-left: 3vw;
+    display: ${(props) => (props.current ? 'none' : 'block')};
 `;
 
 const SearchArea = styled.div`
     position: relative;
+    display: ${(props) => (props.current ? 'none' : 'block')};
 `;
 
 const SearchBox = styled.input`
@@ -80,10 +82,10 @@ export default withRouter(({ location: { pathname } }) => {
         <Header>
             <LogoDiv>
                 <Link to="/">
-                    <LogoImg src={logo} alt={'logo'} />
+                    <LogoImg current={pathname === '/'} src={logo} alt={'logo'} />
                 </Link>
             </LogoDiv>
-            <SearchArea>
+            <SearchArea current={pathname === '/'}>
                 <SearchBox type="text" placeholder="단어 검색" />
                 <SearchImg id="search" src={searchImg} alt={'search'} onClick={clickSearch}></SearchImg>
                 {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
