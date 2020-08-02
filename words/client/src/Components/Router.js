@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import Home from '../Routes/Home/Home';
-import Dictionary from '../Routes/Dictionary/Dictionary';
+import Dictionary from '../Routes/Dictionary';
 import QnA from '../Routes/QnA/QnA';
 import Beauty from '../Routes/Beauty/Beauty';
 import Profile from '../Routes/Profile/Profile';
