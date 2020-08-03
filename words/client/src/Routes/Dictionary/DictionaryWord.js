@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import './DictionaryWord.css';
+import styled from 'styled-components';
 
+const Word = styled.div`
+    font-size: 1vw;
+    background-color: white;
+    border-radius: 5px;
+    display:inline-block;
+    padding: 1vw 3vw;
+`;
 class DictionaryWord extends Component {
     render() {
-        return (
-            <div id="word_container">
-                <h2>{this.props.word_name}</h2>
-                <p>{this.props.word_meaning}</p>
-            </div>
-        );
+        return <Word>{this.props.word_name}</Word>;
     }
 }
 
