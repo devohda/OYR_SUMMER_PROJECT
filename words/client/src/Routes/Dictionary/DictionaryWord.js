@@ -5,9 +5,12 @@ const Word = styled.div`
     font-size: 1vw;
     background-color: white;
     border-radius: 5px;
-    display:inline-block;
+    display: inline-block;
     padding: 1vw 3vw;
+
+    margin: 0vw 1vw;
 `;
+
 class DictionaryWord extends Component {
     render() {
         return <Word>{this.props.word_name}</Word>;
