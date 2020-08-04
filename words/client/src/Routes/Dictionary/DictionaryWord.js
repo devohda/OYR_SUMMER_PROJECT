@@ -8,12 +8,33 @@ const Word = styled.div`
     display: inline-block;
     padding: 1vw 3vw;
 
-    margin: 0vw 1vw;
+    margin: 1vw;
 `;
+
+const d = document.getElementsByClassName('word');
+
+function regulateWidth(word) {
+    console.log(d);
+    /* d.forEach((element) => {
+        const len = element.innerText.length;
+        if (len < 3) {
+            element.style.width = '3vw';
+        } else if (len.length < 5) {
+            element.style.width = '5vw';
+        } else if (len.length < 7) {
+            element.style.width = '7vw';
+        } else if (len.length < 9) {
+            element.style.width = '9vw';
+        } else {
+            element.style.width = '11vw';
+        }
+    });*/
+}
 
 class DictionaryWord extends Component {
     render() {
-        return <Word>{this.props.word_name}</Word>;
+        regulateWidth();
+        return <Word className="word">{this.props.word_name}</Word>;
     }
 }
 

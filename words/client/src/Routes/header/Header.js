@@ -74,11 +74,6 @@ const Menu = styled(Link)`
 `;
 
 export default withRouter(({ location: { pathname } }) => {
-    function clickSearch() {
-        let search = document.getElementById('search');
-        console.log('hello');
-    }
-
     return (
         <Header>
             <LogoDiv>
@@ -88,7 +83,7 @@ export default withRouter(({ location: { pathname } }) => {
             </LogoDiv>
             <SearchArea current={pathname === '/'}>
                 <SearchBox type="text" placeholder="단어 검색" />
-                <SearchImg id="search" src={searchImg} alt={'search'} onClick={clickSearch}></SearchImg>
+                <SearchImg id="search" src={searchImg} alt={'search'}></SearchImg>
                 {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
             </SearchArea>
             <Navigation>

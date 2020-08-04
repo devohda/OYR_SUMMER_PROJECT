@@ -1,9 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import DictionaryWord from './DictionaryWord.js';
 import styled from 'styled-components';
-import { string } from 'prop-types';
-import Hangul from 'hangul-js';
 import WordBox from './WordBox';
 
 /*****Anchor 부분*****/
@@ -38,16 +34,11 @@ const Container = styled.div`
 `;
 
 /*****단어 링크*****/
-const WordDiv = styled.div`
-    background-color: red;
-    height: 10vw;
-`;
 
 class Dictionary extends React.Component {
     state = {
         words: '',
         letter: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
-        id: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'],
     };
 
     //동기식 방식으로 변경 async, await 사용. api 가져와서 json으로 파싱하기.
@@ -64,7 +55,6 @@ class Dictionary extends React.Component {
     }
 
     render() {
-        console.log(this.state);
         return (
             <>
                 <Anchor>
@@ -85,8 +75,8 @@ class Dictionary extends React.Component {
                 </Anchor>
                 <main>
                     <Container>
-                        {this.state.letter.map((l) => (
-                            <WordBox words={this.state.words === '' ? [] : this.state.words} letter={l} />
+                        {this.state.letter.map((l, index) => (
+                            <WordBox words={this.state.words === '' ? [] : this.state.words} letter={l} index={index} />
                         ))}
                     </Container>
                 </main>
