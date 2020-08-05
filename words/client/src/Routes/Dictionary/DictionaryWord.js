@@ -28,11 +28,7 @@ function DictionaryWord({ word_name }) {
         }
     }, [wordRef]);
 
-    return (
-        <Word ref={wordRef} className="word">
-            {word_name}
-        </Word>
-    );
+    return <Word ref={wordRef}>{word_name}</Word>;
 }
 
 export default DictionaryWord;

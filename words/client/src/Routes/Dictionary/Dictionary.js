@@ -38,7 +38,7 @@ const Container = styled.div`
 class Dictionary extends React.Component {
     state = {
         words: '',
-        letter: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'],
+        letter: ['ㄱ', 'ㄴ', 'ㄷ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅅ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ', '#'],
     };
 
     //동기식 방식으로 변경 async, await 사용. api 가져와서 json으로 파싱하기.
@@ -72,6 +72,7 @@ class Dictionary extends React.Component {
                     <AnchorButton href="#l">ㅌ</AnchorButton>
                     <AnchorButton href="#m">ㅍ</AnchorButton>
                     <AnchorButton href="#n">ㅎ</AnchorButton>
+                    <AnchorButton href="#o">#</AnchorButton>
                 </Anchor>
                 <main>
                     <Container>
