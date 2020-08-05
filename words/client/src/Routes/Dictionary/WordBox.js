@@ -10,6 +10,7 @@ const Wordbox = styled.div`
 const WordContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
+    padding: 1vw;
 `;
 
 const Title = styled.div`
@@ -33,12 +34,10 @@ export default ({ words, letter, index }) => {
                 <Title>{letter}</Title>
                 <WordContainer>
                     {words
-                        .filter((w) => {
-                            return splitString(w.name, letter);
-                        })
-                        .map((w) => {
-                            return <DictionaryWord word_name={w.name} />;
-                        })}
+                        .filter((w) => splitString(w.name, letter))
+                        .map((w, index) => (
+                            <DictionaryWord key={index} word_name={w.name} />
+                        ))}
                 </WordContainer>
             </Wordbox>
         </>

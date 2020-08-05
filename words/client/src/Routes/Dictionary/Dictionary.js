@@ -5,7 +5,7 @@ import WordBox from './WordBox';
 /*****Anchor 부분*****/
 const Anchor = styled.div`
     height: 3vw;
-    padding: 0 25vw;
+    padding: 0 20vw;
     border-bottom: 0.01vw solid #dbdbdb;
     background-color: white;
 
@@ -26,7 +26,7 @@ const AnchorButton = styled.a`
 
 /*****내용 들어가는 부분*****/
 const Container = styled.div`
-    width: 55vw;
+    width: 65vw;
     margin: 0 auto;
 
     display: flex;
@@ -76,7 +76,7 @@ class Dictionary extends React.Component {
                 <main>
                     <Container>
                         {this.state.letter.map((l, index) => (
-                            <WordBox words={this.state.words === '' ? [] : this.state.words} letter={l} index={index} />
+                            <WordBox key={index} words={this.state.words === '' ? [] : this.state.words} letter={l} index={index} />
                         ))}
                     </Container>
                 </main>

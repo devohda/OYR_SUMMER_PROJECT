@@ -1,41 +1,38 @@
-import React, { Component } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Word = styled.div`
-    font-size: 1vw;
+    font-size: 1.2vw;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     display: inline-block;
-    padding: 1vw 3vw;
+    margin: 1vw 0.3vw;
 
-    margin: 1vw;
+    text-align: center;
+    height: 3vw;
+    line-height: 3vw;
 `;
 
-const d = document.getElementsByClassName('word');
+function DictionaryWord({ word_name }) {
+    // const [d, setd] = useState(document.getElementsByClassName('word'));
+    const wordRef = useRef();
 
-function regulateWidth(word) {
-    console.log(d);
-    /* d.forEach((element) => {
-        const len = element.innerText.length;
-        if (len < 3) {
-            element.style.width = '3vw';
-        } else if (len.length < 5) {
-            element.style.width = '5vw';
-        } else if (len.length < 7) {
-            element.style.width = '7vw';
-        } else if (len.length < 9) {
-            element.style.width = '9vw';
+    useEffect(() => {
+        const wordElem = wordRef.current;
+
+        const len = wordElem.innerText.length;
+        if (len >= 8) {
+            wordElem.style.width = '30.5vw';
         } else {
-            element.style.width = '11vw';
+            wordElem.style.width = '15vw';
         }
-    });*/
-}
+    }, [wordRef]);
 
-class DictionaryWord extends Component {
-    render() {
-        regulateWidth();
-        return <Word className="word">{this.props.word_name}</Word>;
-    }
+    return (
+        <Word ref={wordRef} className="word">
+            {word_name}
+        </Word>
+    );
 }
 
 export default DictionaryWord;
