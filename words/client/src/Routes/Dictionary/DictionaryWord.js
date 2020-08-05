@@ -1,15 +1,38 @@
-import React, { Component } from 'react';
-import './DictionaryWord.css';
+import React, { useState, useRef, useEffect } from 'react';
+import styled from 'styled-components';
 
-class DictionaryWord extends Component {
-    render() {
-        return (
-            <div id="word_container">
-                <h2>{this.props.word_name}</h2>
-                <p>{this.props.word_meaning}</p>
-            </div>
-        );
-    }
+const Word = styled.div`
+    font-size: 1.2vw;
+    background-color: white;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 1vw 0.3vw;
+
+    text-align: center;
+    height: 3vw;
+    line-height: 3vw;
+`;
+
+function DictionaryWord({ word_name }) {
+    // const [d, setd] = useState(document.getElementsByClassName('word'));
+    const wordRef = useRef();
+
+    useEffect(() => {
+        const wordElem = wordRef.current;
+
+        const len = wordElem.innerText.length;
+        if (len >= 8) {
+            wordElem.style.width = '30.5vw';
+        } else {
+            wordElem.style.width = '15vw';
+        }
+    }, [wordRef]);
+
+    return (
+        <Word ref={wordRef} className="word">
+            {word_name}
+        </Word>
+    );
 }
 
 export default DictionaryWord;

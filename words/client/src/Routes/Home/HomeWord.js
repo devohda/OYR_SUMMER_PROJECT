@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './HomeWord.css';
 
 class HomeWord extends Component {
     render() {

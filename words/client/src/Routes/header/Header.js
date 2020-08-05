@@ -10,6 +10,7 @@ const Header = styled.header`
     left: 0;
 
     background-color: #ffffff;
+    border-bottom: 0.01vw solid #dbdbdb;
 
     height: 4.5vw;
     display: flex;
@@ -37,7 +38,7 @@ const SearchBox = styled.input`
     height: 2.2vw;
     width: 27vw;
     border-radius: 1vw;
-    border: #dbdbdb 1px solid;
+    border: #dbdbdb 0.01vw solid;
     padding-left: 2vw;
     font-size: 0.9vw;
     margin-left: 4vw;
@@ -63,7 +64,7 @@ const Navigation = styled.ul`
 
 const NaviList = styled.li`
     padding-bottom: 0.1vw;
-    border-bottom: 1px solid ${(props) => (props.current ? '#f4b33d' : 'transparent')};
+    border-bottom: 0.01vw solid ${(props) => (props.current ? '#f4b33d' : 'transparent')};
 `;
 
 const Menu = styled(Link)`
@@ -73,11 +74,6 @@ const Menu = styled(Link)`
 `;
 
 export default withRouter(({ location: { pathname } }) => {
-    function clickSearch() {
-        let search = document.getElementById('search');
-        console.log('hello');
-    }
-
     return (
         <Header>
             <LogoDiv>
@@ -87,7 +83,7 @@ export default withRouter(({ location: { pathname } }) => {
             </LogoDiv>
             <SearchArea current={pathname === '/'}>
                 <SearchBox type="text" placeholder="단어 검색" />
-                <SearchImg id="search" src={searchImg} alt={'search'} onClick={clickSearch}></SearchImg>
+                <SearchImg id="search" src={searchImg} alt={'search'}></SearchImg>
                 {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
             </SearchArea>
             <Navigation>
