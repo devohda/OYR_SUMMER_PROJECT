@@ -1,9 +1,14 @@
 //home 화면.
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+
 import logo from './home_logo.png';
-import searchImg from './search.png';
+
+import Random from './Random';
+import SearchWord from './SearchWord';
+import SearchList from './SearchList';
 
 const Main = styled.main`
     height: 100%;
@@ -24,30 +29,6 @@ const Logo_img = styled.img`
     width: 22vw;
 `;
 
-const Search = styled.div`
-    position: relative;
-    width: 40vw;
-    margin: 0 auto;
-`;
-const SearchBox = styled.input`
-    height: 2.3vw;
-    width: 40vw;
-    border-radius: 3vw;
-    border: #dbdbdb 1px solid;
-
-    font-size: 0.9vw;
-    text-align: center;
-    &:focus {
-        outline: none;
-    }
-`;
-const SearchImg = styled.img`
-    width: 1.6vw;
-    position: absolute;
-    right: 2vw;
-    top: 0.4vw;
-    margin: 0 auto;
-`;
 
 const ListArea = styled.div`
     display: flex;
@@ -68,12 +49,39 @@ const ListName = styled.h3`
     padding-bottom: 3vw;
     font-size: 1vw;
 `;
-const List = styled.li`
-    padding-bottom: 0.7vw;
-`;
 
-class Home extends React.Component {
-    render() {
+
+function Home() {
+
+    const [inputs, setInputs] = useState({
+        wordname: '',
+    });
+    const {wordname} = inputs;
+    const onChange = e => {
+        const { name, value } = e.target;
+        setInputs({
+          ...inputs,
+          [name]: value
+        });
+    };
+
+    const [words, setWords] = useState([
+
+  ]);
+  const nextId = useRef(4);
+  const onCreate = () => {
+    const word = {
+        id: nextId.current,
+        wordname
+      };
+      setWords([...words, word]);
+
+    setInputs({
+        wordname: '',
+      });
+    nextId.current += 1;
+  };
+
         return (
             <Main>
                 <Logo>
@@ -81,27 +89,23 @@ class Home extends React.Component {
                         <Logo_img src={logo} alt={'home_logo'} />
                     </Link>
                 </Logo>
-                <Search>
-                    <SearchBox type="text" />
-                    <SearchImg src={searchImg} alt={'search'}></SearchImg>
-                </Search>
+      <SearchWord 
+      wordname={wordname}
+      onChange={onChange}
+      onCreate={onCreate}
+      />
                 <ListArea>
                     <ListDiv>
                         <ListName>이런 단어는 어떠신가요?</ListName>
-                        <List></List>
-                        <List></List>
-                        <List></List>
+                        <Random />
                     </ListDiv>
                     <ListDiv>
                         <ListName>최근 검색한 단어</ListName>
-                        <List></List>
-                        <List></List>
-                        <List></List>
+                        <SearchList words={words} />
                     </ListDiv>
                 </ListArea>
             </Main>
         );
-    }
 }
 
 export default Home;
