@@ -10,7 +10,7 @@ const Header = styled.header`
     left: 0;
 
     background-color: #ffffff;
-    border-bottom: 0.01vw solid #dbdbdb;
+    border-bottom: ${(props) => (props.current ? 'none' : '0.01vw solid #dbdbdb')};
 
     height: 4.5vw;
     display: flex;
@@ -75,7 +75,7 @@ const Menu = styled(Link)`
 
 export default withRouter(({ location: { pathname } }) => {
     return (
-        <Header>
+        <Header current={pathname === '/'}>
             <LogoDiv>
                 <Link to="/">
                     <LogoImg current={pathname === '/'} src={logo} alt={'logo'} />

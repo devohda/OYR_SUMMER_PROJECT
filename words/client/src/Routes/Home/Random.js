@@ -6,6 +6,7 @@ import RandomWord from './RandomWord.js';
 class Random extends React.Component {
     state = {
         words: '',
+        id:''
     };
     
     componentDidMount() {
@@ -21,18 +22,38 @@ class Random extends React.Component {
         return body;
     };
 
-
+    randomNum () {
+        let Num = [];
+            for(var i=0; i<3; i++) {
+                let n = Math.floor(Math.random() * 353) + 218;
+                console.log(sameNum(n))
+                if (! sameNum(n)) {
+                    Num.push(n);
+                } else {
+                    i--;
+                }
+            }
+        function sameNum (n) {
+            return Num.find((e) => (e === n));
+        }
+        return Num;
+    }
+    
+    
     render() {
+        
         return (
             <>
                 <main>
                 { this.state.words ?
                 this.state.words.map(w => {
-                  return(
-                    <RandomWord
-                      key={w.id}
-                      word_name = {w.name}
-                    />);
+                  if (this.randomNum()==this.state.id){
+                      return(
+                        <RandomWord
+                          key={w.id}
+                          word_name = {w.name}
+                        />);
+                  }  
                 }) : ""
               }
                 </main>

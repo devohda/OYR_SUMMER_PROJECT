@@ -31,10 +31,7 @@ const SearchBtn = styled.button`
     border: none;
     background: none;
     &:hover{
-        background-color : pink;
-    }
-    &:active{
-        background-color: aqua;
+        cursor:pointer
     }
     &:focus{
         outline:none;
