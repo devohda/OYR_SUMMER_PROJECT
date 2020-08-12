@@ -43,6 +43,8 @@ const ListDiv = styled.div`
     width: 13vw;
     display: flex;
     flex-direction: column;
+    text-align:center;
+    font-size: 0.9vw;
 `;
 const ListName = styled.h3`
     color: #f4b33d;

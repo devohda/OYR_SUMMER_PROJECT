@@ -24,7 +24,6 @@ class Random extends React.Component {
     };
 
     
-    
     render() {
 
         function randomNum () {
@@ -47,9 +46,8 @@ class Random extends React.Component {
         };
 
         
-        let word = [];
-        const i = 1;
-
+        const word = [];
+        
         return (
             
             <>
@@ -78,12 +76,12 @@ class Random extends React.Component {
                             <RandomWord
                                     key={w.id}
                                     word_name = {w.name}
-                                  />
+                            />
 
                         )
-
-                        console.log(w)
                     })
+
+                    
                 }
                 
 
@@ -132,6 +130,8 @@ class Random extends React.Component {
               }
             </main> */}
             </>
+
+
         );
     }
 }
