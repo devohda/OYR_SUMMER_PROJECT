@@ -5,7 +5,7 @@ import Dictionary from '../Routes/Dictionary';
 import QnA from '../Routes/QnA/QnA';
 import Beauty from '../Routes/Beauty/Beauty';
 import Profile from '../Routes/Profile/Profile';
-import Header from '../Routes/header/';
+import Header from '../Routes/Header/';
 /**  로그인 및 회원가입 페이지 추가  */
 import Login from '../Routes/Login/Login';
 import Register from '../Routes/Register/Register';
