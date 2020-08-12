@@ -47,7 +47,9 @@ const ListDiv = styled.div`
 const ListName = styled.h3`
     color: #f4b33d;
     padding-bottom: 3vw;
-    font-size: 1vw;
+    font-size: 1.1vw;
+    font-weight : bold;
+    text-align:center;
 `;
 
 

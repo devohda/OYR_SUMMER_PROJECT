@@ -4,9 +4,10 @@ import RandomWord from './RandomWord.js';
 
 
 class Random extends React.Component {
+
+
     state = {
         words: '',
-        id:''
     };
     
     componentDidMount() {
@@ -22,41 +23,114 @@ class Random extends React.Component {
         return body;
     };
 
-    randomNum () {
-        let Num = [];
-            for(var i=0; i<3; i++) {
-                let n = Math.floor(Math.random() * 353) + 218;
-                console.log(sameNum(n))
-                if (! sameNum(n)) {
-                    Num.push(n);
-                } else {
-                    i--;
-                }
-            }
-        function sameNum (n) {
-            return Num.find((e) => (e === n));
-        }
-        return Num;
-    }
     
     
     render() {
+
+        function randomNum () {
+            let Num = [];
+                for(var i=0; i<3; i++) {
+                    let n = Math.floor(Math.random() * 135) + 1;
+                    
+                    console.log(sameNum(n))
+                    if (! sameNum(n)) {
+                        n = n + 218;
+                        Num.push(n);
+                    } else {
+                        i--;
+                    }
+                }
+            function sameNum (n) {
+                return Num.find((e) => (e === n));
+            }
+            return Num;
+        };
+
         
+        let word = [];
+        const i = 1;
+
         return (
+            
             <>
-                <main>
+            <main>
+                { this.state.words ?
+                    randomNum().map(n=>{
+                        console.log("랜덤 수 : " + n);
+                        this.state.words.map(w => {
+                            if(n === w.id){
+                                console.log("단어 id 값 : " + w.id);
+                                console.log(w.name)
+                                word.push({name:
+                                    w.name,
+                                    id:w.id
+                                });
+                            }
+                        
+                    })
+                    })
+                 : ""
+                }
+
+                {
+                    word.map( w =>{
+                        return(
+                            <RandomWord
+                                    key={w.id}
+                                    word_name = {w.name}
+                                  />
+
+                        )
+
+                        console.log(w)
+                    })
+                }
+                
+
+            </main>
+
+
+
+
+
+                {/* <main>
+                { this.state.words ?
+                    randomNum().map(n=>{
+                        console.log("랜덤 수 : " + n);
+                        this.state.words.map(w => {
+                            if(n === w.id){
+                                console.log("단어 id 값 : " + w.id);
+                                console.log(w.name)
+                                return(
+                                  <RandomWord
+                                    key={w.id}
+                                    word_id= {w.id}
+                                    word_name = {w.name}
+                                    word_meaning = {w.meaning}
+                                  />
+                                )
+                            }
+                        
+                    })
+                    })
+                 : ""
+              }
+            </main> */}
+
+
+
+            {/* <main>
                 { this.state.words ?
                 this.state.words.map(w => {
-                  if (this.randomNum()==this.state.id){
-                      return(
-                        <RandomWord
-                          key={w.id}
-                          word_name = {w.name}
-                        />);
-                  }  
-                }) : ""
+                        return(
+                          <RandomWord
+                            key={w.id}
+                            word_id= {w.id}
+                            word_name = {w.name}
+                          />)
+                    }) : ""
               }
-                </main>
+            </main> */}
             </>
         );
     }

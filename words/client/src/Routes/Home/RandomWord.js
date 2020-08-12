@@ -3,9 +3,11 @@ import styled from 'styled-components';
 
 
 const Word = styled.li`
-    padding-bottom: 0.7vw;
+    padding-bottom: 1vw;
     background-color: white;
     list-style:none;
+    font-size: 0.9vw;
+    text-align:center;
 `;
 
 
@@ -15,7 +17,7 @@ class RandomWord extends React.Component{
         return (
             <>
                 <Word>
-                    {this.props.word_name}
+                    <h2>{this.props.word_name}</h2>
                 </Word>
             </>
         );
