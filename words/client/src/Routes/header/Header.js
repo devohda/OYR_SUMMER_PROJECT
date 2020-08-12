@@ -103,6 +103,10 @@ export default withRouter(({ location: { pathname } }) => {
                 <NaviList current={pathname === '/profile'}>
                     <Menu to="/profile">profile</Menu>
                 </NaviList>
+                {/**  헤더에 로그인 추가  */}
+                <NaviList current={pathname === '/login'}>
+                    <Menu to="/login">Login</Menu>
+                </NaviList>
             </Navigation>
         </Header>
     );
