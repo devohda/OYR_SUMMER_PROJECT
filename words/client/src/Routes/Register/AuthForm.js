@@ -40,19 +40,35 @@ const Footer = styled.div`
     }
 `;
 
-const AuthForm = () => {
+const textMap = {
+    login: '로그인',
+    register: '회원가입',
+};
+
+const AuthForm = ({ type, form, onChange, onSubmit }) => {
+    const text = textMap[type];
     return (
         <AuthFormBlock>
-            <form>
+            <form onSubmit={onSubmit}>
                 <h3>ID</h3>
-                <StyledInput autoComplete="username" name="username" />
+                <StyledInput autoComplete="username" name="username" onChange={onChange} value={form.username} />
                 <h3>PASSWORD</h3>
-                <StyledInput autoComplete="new-password" name="password" type="password" />
-                <Button>LOGIN</Button>
+                <StyledInput autoComplete="new-password" name="password" type="password" onChange={onChange} value={form.password} />
+                {type === 'register' && (
+                    <>
+                        <h3>PASSWORD CONFIRM</h3>
+                        <StyledInput
+                            autoComplete="new-password"
+                            name="passwordConfirm"
+                            type="password"
+                            onChange={onChange}
+                            value={form.passwordConfirm}
+                        />
+                    </>
+                )}
+                <Button>{text}</Button>
             </form>
-            <Footer>
-                <Link to="/register">회원가입</Link>
-            </Footer>
+            <Footer>{type === 'login' ? <Link to="/register">회원가입</Link> : <Link to="/login">로그인</Link>}</Footer>
         </AuthFormBlock>
     );
 };
