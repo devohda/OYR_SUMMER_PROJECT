@@ -20,7 +20,7 @@ const StyledButton = styled.button`
     font-size: 1.125rem;
     background: #f4b33d;
     &:hover {
-        background: ##d28f14;
+        background: #d28f14;
     }
 `;
 
