@@ -34,7 +34,7 @@ app.get('/api/words', (req, res) => {
         console.log('fetch words...');
         connection.query('SELECT * FROM words', (err, rows, fields) => {
             connection.release();
-            console.log(err, rows);
+            console.log('Success...');
             if (err) throw err;
             else {
                 res.send(rows);

@@ -73,7 +73,47 @@ const Menu = styled(Link)`
     font-weight: 500;
 `;
 
-export default withRouter(({ location: { pathname } }) => {
+const MakingHeader = withRouter(({ location: { pathname } }) => {
+    //pathname을 해체해서 독립적으로 사용
+    return (
+        <>
+            <Header current={pathname === '/'}>
+                <LogoDiv>
+                    <Link to="/">
+                        <LogoImg current={pathname === '/'} src={logo} alt={'logo'} />
+                    </Link>
+                </LogoDiv>
+                <SearchArea current={pathname === '/'}>
+                    <SearchBox type="text" placeholder="단어 검색" />
+                    <SearchImg id="search" src={searchImg} alt={'search'}></SearchImg>
+                    {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
+                </SearchArea>
+                <Navigation>
+                    <NaviList current={pathname === '/dictionary'}>
+                        <Menu to="/dictionary">words</Menu>
+                    </NaviList>
+                    <NaviList current={pathname === '/qna'}>
+                        <Menu to="/qna">QnA</Menu>
+                    </NaviList>
+                    <NaviList current={pathname === '/beauty'}>
+                        <Menu to="/beauty">quotes</Menu>
+                    </NaviList>
+                    <NaviList current={pathname === '/profile'}>
+                        <Menu to="/profile">profile</Menu>
+                    </NaviList>
+                    {/*  헤더에 로그인 추가  */}
+                    <NaviList current={pathname === '/login'}>
+                        <Menu to="/login">Login</Menu>
+                    </NaviList>
+                </Navigation>
+            </Header>
+        </>
+    );
+});
+
+export default MakingHeader;
+
+/*withRouter(({ location: { pathname } }) => {
     return (
         <Header current={pathname === '/'}>
             <LogoDiv>
@@ -84,7 +124,7 @@ export default withRouter(({ location: { pathname } }) => {
             <SearchArea current={pathname === '/'}>
                 <SearchBox type="text" placeholder="단어 검색" />
                 <SearchImg id="search" src={searchImg} alt={'search'}></SearchImg>
-                {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.*/}
+                {/*나중에 이미지 클릭하면 url 변하게하던지 검색 되게 만들어야 함.}
             </SearchArea>
             <Navigation>
                 <NaviList current={pathname === '/dictionary'}>
@@ -99,11 +139,11 @@ export default withRouter(({ location: { pathname } }) => {
                 <NaviList current={pathname === '/profile'}>
                     <Menu to="/profile">profile</Menu>
                 </NaviList>
-                {/**  헤더에 로그인 추가  */}
+                {/**  헤더에 로그인 추가  }
                 <NaviList current={pathname === '/login'}>
                     <Menu to="/login">Login</Menu>
                 </NaviList>
             </Navigation>
         </Header>
     );
-});
+});*/
