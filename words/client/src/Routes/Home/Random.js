@@ -8,6 +8,9 @@ class Random extends React.Component {
 
     state = {
         words: '',
+        randoms: [],
+        cnt: 0,
+        N:0,
     };
     
     componentDidMount() {
@@ -23,10 +26,19 @@ class Random extends React.Component {
         return body;
     };
 
+    static defaultProps = {
+        data: [],
+        data2 : [],
+      }
     
     render() {
 
+        const { data } = this.props;
+        const { data2 } = this.props;
+        const {N} = this.props;
+
         function randomNum () {
+            data.slice(0,2);
             let Num = [];
                 for(var i=0; i<3; i++) {
                     let n = Math.floor(Math.random() * 135) + 1;
@@ -45,8 +57,7 @@ class Random extends React.Component {
             return Num;
         };
 
-        
-        const word = [];
+        /* const word = []; */
         
         return (
             
@@ -56,22 +67,26 @@ class Random extends React.Component {
                     randomNum().map(n=>{
                         console.log("랜덤 수 : " + n);
                         this.state.words.map(w => {
-                            if(n === w.id){
+                            if(n === w.id && this.state.cnt < 3){
                                 console.log("단어 id 값 : " + w.id);
                                 console.log(w.name)
-                                word.push({name:
+
+                                
+                                data.push({name:
                                     w.name,
                                     id:w.id
                                 });
-                            }
-                        
+                                
+                                
+                                this.state.cnt++;
+                            }  
                     })
                     })
                  : ""
                 }
 
                 {
-                    word.map( w =>{
+                    data.map( w =>{
                         return(
                             <RandomWord
                                     key={w.id}
