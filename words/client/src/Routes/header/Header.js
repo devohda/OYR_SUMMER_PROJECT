@@ -75,6 +75,7 @@ const Menu = styled(Link)`
 
 const MakingHeader = withRouter(({ location: { pathname } }) => {
     //pathname을 해체해서 독립적으로 사용
+    //current 라는 props를 만들어서 css 조절
     return (
         <>
             <Header current={pathname === '/'}>
